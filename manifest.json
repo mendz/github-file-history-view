@@ -1,0 +1,13 @@
+{
+  "name": "Github File History By Commits - View File",
+  "short_name": "Github File History - View File",
+  "description": "Adds a button link to the file at the point in the history file page in GitHub.",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*/*/commits/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
