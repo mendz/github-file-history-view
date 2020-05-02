@@ -44,11 +44,11 @@ function run() {
     .map(child => child.textContent)
     .join('/');
 
-  if (!breadcrumbs.length) {
+  const file = document.querySelector('.breadcrumb strong').textContent;
+
+  if (!breadcrumbs.length && !file.length) {
     return;
   }
-
-  const file = document.querySelector('.breadcrumb strong').textContent;
 
   const filePath = `${breadcrumbs}/${file}`;
   const browseRepositoryLinks = document.querySelectorAll(
