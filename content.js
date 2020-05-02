@@ -44,9 +44,9 @@ function run() {
     .map(child => child.textContent)
     .join('/');
 
-  const file = document.querySelector('.breadcrumb strong').textContent;
+  const file = document.querySelector('.breadcrumb strong')?.textContent;
 
-  if (!breadcrumbs.length && !file.length) {
+  if (!breadcrumbs.length && !file?.length) {
     return;
   }
 
