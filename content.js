@@ -73,4 +73,18 @@ function run() {
   });
 }
 
-run();
+// in case the document is already rendered
+if (document.readyState !== 'loading') {
+  run();
+} else if (document.addEventListener) {
+  // modern browsers
+  document.addEventListener('DOMContentLoaded', run);
+}
+
+// fire the function `run` every time that the URL changes under *"https://github.com/*/*/commits/*"*
+chrome.runtime.onMessage.addListener((data) => {
+  if (data.message === 'urlChanged') {
+    console.log(`%c url changed!`, 'font-size: 20px; color: gold');
+    run();
+  }
+});
