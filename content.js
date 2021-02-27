@@ -22,7 +22,7 @@ function generateCommitFileLink(domain, filePath, linkClassList, svgClassList) {
 <a
   href="${domain}${filePath}"
   aria-label="See the file at this point in the history"
-  class="BtnGroup-item ${linkClassList}"
+  class="ml-custom-file-button BtnGroup-item ${linkClassList}"
   rel="nofollow"
 >
   <svg class="${svgClassList}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
@@ -33,14 +33,25 @@ function generateCommitFileLink(domain, filePath, linkClassList, svgClassList) {
 }
 
 function run() {
+  const url = document.URL;
+  // "https://github.com/*/*/commits/*"
+  const urlMatched = /https:\/\/github.com\/.*\/.*\/commits\/.*\/.*/.test(url);
+  const isCustomButtonsExists = document.querySelectorAll('a.ml-custom-file-button')?.length > 0;
+
+  if (!urlMatched || isCustomButtonsExists) {
+    return;
+  }
+
   const breadcrumbs = [
     ...document.querySelectorAll('.breadcrumb > span:not(.js-repo-root)'),
   ]
     .map((child) => child.textContent)
     .join('');
   const file = document.querySelector('.breadcrumb strong')?.textContent;
+  
+  const shouldRun = breadcrumbs.length > 0 && file?.length > 0;
 
-  if (!breadcrumbs.length && !file?.length) {
+  if (!shouldRun) {
     return;
   }
 
@@ -84,7 +95,6 @@ if (document.readyState !== 'loading') {
 // fire the function `run` every time that the URL changes under *"https://github.com/*/*/commits/*"*
 chrome.runtime.onMessage.addListener((data) => {
   if (data.message === 'urlChanged') {
-    console.log(`%c url changed!`, 'font-size: 20px; color: gold');
     run();
   }
 });
