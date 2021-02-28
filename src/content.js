@@ -36,7 +36,8 @@ function run() {
   const url = document.URL;
   // "https://github.com/*/*/commits/*"
   const urlMatched = /https:\/\/github.com\/.*\/.*\/commits\/.*\/.*/.test(url);
-  const isCustomButtonsExists = document.querySelectorAll('a.ml-custom-file-button')?.length > 0;
+  const isCustomButtonsExists =
+    document.querySelectorAll('a.ml-custom-file-button')?.length > 0;
 
   if (!urlMatched || isCustomButtonsExists) {
     return;
@@ -48,7 +49,7 @@ function run() {
     .map((child) => child.textContent)
     .join('');
   const file = document.querySelector('.breadcrumb strong')?.textContent;
-  
+
   const shouldRun = breadcrumbs.length > 0 && file?.length > 0;
 
   if (!shouldRun) {
