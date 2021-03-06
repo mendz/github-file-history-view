@@ -14,11 +14,11 @@
     "scripts": ["background.js"]
   },
   "icons": {
-    "16": "icons/document-16x16.png",
-    "32": "icons/document-32x32.png",
-    "48": "icons/document-48x48.png",
-    "60": "icons/document-60x60.png",
-    "128": "icons/document-128x128.png"
+    "16": "icons/icon-16x16.png",
+    "32": "icons/icon-32x32.png",
+    "48": "icons/icon-48x48.png",
+    "60": "icons/icon-60x60.png",
+    "128": "icons/icon-128x128.png"
   },
   "permissions": ["webNavigation"]
 }
