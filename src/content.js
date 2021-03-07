@@ -93,7 +93,7 @@ if (document.readyState !== 'loading') {
   document.addEventListener('DOMContentLoaded', run);
 }
 
-// fire the function `run` every time that the URL changes under *"https://github.com/*/*/commits/*"*
+// fire the function `run` every time that the URL changes under "https://github.com/*"
 chrome.runtime.onMessage.addListener((data) => {
   if (data.message === 'urlChanged') {
     run();
