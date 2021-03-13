@@ -2,19 +2,23 @@
   "name": "Github File History By Commits - View File",
   "short_name": "Github File History - View File",
   "description": "When viewing history for a single file, adds a new button with a link to view the file at the commit point in the history.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "manifest_version": 2,
   "content_scripts": [
     {
-      "matches": ["https://github.com/*/*/commits/*"],
+      "matches": ["https://github.com/*"],
       "js": ["content.js"]
     }
   ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "icons": {
-    "16": "images/document-16x16.png",
-    "32": "images/document-32x32.png",
-    "48": "images/document-48x48.png",
-    "60": "images/document-60x60.png",
-    "128": "images/document-128x128.png"
-  }
+    "16": "icons/icon-16x16.png",
+    "32": "icons/icon-32x32.png",
+    "48": "icons/icon-48x48.png",
+    "60": "icons/icon-60x60.png",
+    "128": "icons/icon-128x128.png"
+  },
+  "permissions": ["webNavigation"]
 }
